@@ -1,6 +1,6 @@
 ﻿namespace WinShu
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -34,8 +34,14 @@
             this.newTaskButton = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
+            this.taskPanel = new System.Windows.Forms.Panel();
+            this.labelOff = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.taskLabel = new System.Windows.Forms.Label();
             this.menuPanel.SuspendLayout();
             this.panelSubMenu.SuspendLayout();
+            this.taskPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuPanel
@@ -124,18 +130,71 @@
             this.panelLogo.Size = new System.Drawing.Size(200, 80);
             this.panelLogo.TabIndex = 2;
             // 
-            // Form1
+            // taskPanel
+            // 
+            this.taskPanel.AutoScroll = true;
+            this.taskPanel.Controls.Add(this.labelOff);
+            this.taskPanel.Controls.Add(this.button1);
+            this.taskPanel.Controls.Add(this.dateTimePicker);
+            this.taskPanel.Controls.Add(this.taskLabel);
+            this.taskPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.taskPanel.Location = new System.Drawing.Point(200, 0);
+            this.taskPanel.Name = "taskPanel";
+            this.taskPanel.Size = new System.Drawing.Size(734, 561);
+            this.taskPanel.TabIndex = 5;
+            // 
+            // labelOff
+            // 
+            this.labelOff.AutoSize = true;
+            this.labelOff.Location = new System.Drawing.Point(152, 185);
+            this.labelOff.Name = "labelOff";
+            this.labelOff.Size = new System.Drawing.Size(84, 15);
+            this.labelOff.TabIndex = 3;
+            this.labelOff.Text = "Wylaczy sie za:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(152, 134);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Shut it ";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker.Location = new System.Drawing.Point(299, 134);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(101, 23);
+            this.dateTimePicker.TabIndex = 1;
+            // 
+            // taskLabel
+            // 
+            this.taskLabel.AutoSize = true;
+            this.taskLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.taskLabel.Location = new System.Drawing.Point(224, 26);
+            this.taskLabel.Name = "taskLabel";
+            this.taskLabel.Size = new System.Drawing.Size(176, 37);
+            this.taskLabel.TabIndex = 0;
+            this.taskLabel.Text = "Add new task";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSlateGray;
             this.ClientSize = new System.Drawing.Size(934, 561);
+            this.Controls.Add(this.taskPanel);
             this.Controls.Add(this.menuPanel);
             this.MinimumSize = new System.Drawing.Size(950, 600);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "WinShu";
             this.menuPanel.ResumeLayout(false);
             this.panelSubMenu.ResumeLayout(false);
+            this.taskPanel.ResumeLayout(false);
+            this.taskPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -147,5 +206,10 @@
         private Button newTaskButton;
         private Button buttonMenu;
         private Panel panelLogo;
+        private Panel taskPanel;
+        private Label taskLabel;
+        private DateTimePicker dateTimePicker;
+        private Label labelOff;
+        private Button button1;
     }
 }

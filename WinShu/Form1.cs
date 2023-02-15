@@ -1,48 +1,61 @@
 namespace WinShu
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+            taskPanel.Visible = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-        private void hidePanelSubMenu()
+        private void hidePanel(Panel panel)
         {
-            if(panelSubMenu.Visible == true)
+            if(panel.Visible == true)
             {
-                panelSubMenu.Visible = false;
+                panel.Visible = false;
             }
         }
-        private void showPanelSubMenu(Panel subMenu)
+        private void showPanel(Panel panel)
         {
-            if(subMenu.Visible == false)
+            if(panel.Visible == false)
             {
-                hidePanelSubMenu();
-                subMenu.Visible = true;
+                hidePanel(panel);
+                panel.Visible = true;
             }
             else
-                subMenu.Visible = false;
+                panel.Visible = false;
         }
 
+        //MENU BUTTON
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            showPanelSubMenu(panelSubMenu);
+            showPanel(panelSubMenu);
         }
 
+        //TASK BUTTON
         private void newTaskButton_Click(object sender, EventArgs e)
         {
-            hidePanelSubMenu();
+            if(taskPanel.Visible == false)
+            {
+                taskPanel.Visible = true;
+            }
         }
 
+        //LIST BUTTON
         private void listButton_Click(object sender, EventArgs e)
         {
-            
-            hidePanelSubMenu();
+            taskPanel.Visible = false;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var when = TaskService.Shutty(dateTimePicker.Value);
+            labelOff.Text = $"Wylaczy sie za : {when}";
         }
     }
 }
