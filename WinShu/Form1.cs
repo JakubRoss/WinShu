@@ -1,7 +1,10 @@
+using System.Diagnostics;
+
 namespace WinShu
 {
     public partial class MainForm : Form
     {
+        public List<Process> processList = new List<Process>();
         public MainForm()
         {
             InitializeComponent();
@@ -22,24 +25,40 @@ namespace WinShu
         //TASK BUTTON
         private void newTaskButton_Click(object sender, EventArgs e)
         {
+            Utils.hidePanel(listPanel);
             Utils.showPanel(taskPanel);   
         }
 
         //LIST BUTTON
         private void listButton_Click(object sender, EventArgs e)
         {
-            //Utils.showPanel(panel1);
+            Utils.hidePanel(taskPanel);
+            Utils.showPanel(listPanel);
+            foreach (Process process in processList)
+            {
+                string[] row = {
+               process.Id.ToString(),
+               process.StartInfo.FileName,
+               process.StartTime.ToString(),
+               process.StartInfo.FileName
+               };
+
+               ListViewItem listViewItem = new ListViewItem(row);
+                processListView.Items.Add(listViewItem);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var when = Utils.Shutty(dateTimePicker.Value);
-            labelOff.Text = $"Wylaczy sie za : {when}";
+            var process = Utils.Shutty(dateTimePicker.Value);
+            processList.Add(process);
+            labelOff.Text = $"komp wylaczy sie : {process.StartTime}";
         }
 
         private void buttonEND_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+            
         }
     }
 }

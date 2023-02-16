@@ -40,9 +40,17 @@
             this.button1 = new System.Windows.Forms.Button();
             this.labelOff = new System.Windows.Forms.Label();
             this.taskPanel = new System.Windows.Forms.Panel();
+            this.listPanel = new System.Windows.Forms.Panel();
+            this.processListView = new System.Windows.Forms.ListView();
+            this.columnID = new System.Windows.Forms.ColumnHeader();
+            this.columnName = new System.Windows.Forms.ColumnHeader();
+            this.columnDateTime = new System.Windows.Forms.ColumnHeader();
+            this.columnType = new System.Windows.Forms.ColumnHeader();
+            this.listLabel = new System.Windows.Forms.Label();
             this.menuPanel.SuspendLayout();
             this.panelSubMenu.SuspendLayout();
             this.taskPanel.SuspendLayout();
+            this.listPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuPanel
@@ -191,12 +199,71 @@
             this.taskPanel.Controls.Add(this.button1);
             this.taskPanel.Controls.Add(this.dateTimePicker);
             this.taskPanel.Controls.Add(this.taskLabel);
-            this.taskPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.taskPanel.Location = new System.Drawing.Point(200, 0);
             this.taskPanel.Name = "taskPanel";
             this.taskPanel.Size = new System.Drawing.Size(750, 600);
             this.taskPanel.TabIndex = 5;
             this.taskPanel.Visible = false;
+            // 
+            // listPanel
+            // 
+            this.listPanel.AutoScroll = true;
+            this.listPanel.BackColor = System.Drawing.Color.Gray;
+            this.listPanel.Controls.Add(this.processListView);
+            this.listPanel.Controls.Add(this.listLabel);
+            this.listPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.listPanel.Location = new System.Drawing.Point(200, 0);
+            this.listPanel.Name = "listPanel";
+            this.listPanel.Size = new System.Drawing.Size(750, 600);
+            this.listPanel.TabIndex = 6;
+            this.listPanel.Visible = false;
+            // 
+            // processListView
+            // 
+            this.processListView.BackColor = System.Drawing.Color.Gray;
+            this.processListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnID,
+            this.columnName,
+            this.columnDateTime,
+            this.columnType});
+            this.processListView.GridLines = true;
+            this.processListView.Location = new System.Drawing.Point(55, 134);
+            this.processListView.Name = "processListView";
+            this.processListView.Size = new System.Drawing.Size(604, 237);
+            this.processListView.TabIndex = 1;
+            this.processListView.UseCompatibleStateImageBehavior = false;
+            this.processListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnID
+            // 
+            this.columnID.Text = "ID";
+            this.columnID.Width = 100;
+            // 
+            // columnName
+            // 
+            this.columnName.Text = "Name";
+            this.columnName.Width = 150;
+            // 
+            // columnDateTime
+            // 
+            this.columnDateTime.Text = "Date & Time";
+            this.columnDateTime.Width = 200;
+            // 
+            // columnType
+            // 
+            this.columnType.Text = "Type";
+            this.columnType.Width = 150;
+            // 
+            // listLabel
+            // 
+            this.listLabel.AutoSize = true;
+            this.listLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listLabel.ForeColor = System.Drawing.Color.White;
+            this.listLabel.Location = new System.Drawing.Point(224, 26);
+            this.listLabel.Name = "listLabel";
+            this.listLabel.Size = new System.Drawing.Size(301, 37);
+            this.listLabel.TabIndex = 0;
+            this.listLabel.Text = "There is no task to show";
             // 
             // MainForm
             // 
@@ -205,6 +272,7 @@
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(950, 600);
             this.ControlBox = false;
+            this.Controls.Add(this.listPanel);
             this.Controls.Add(this.taskPanel);
             this.Controls.Add(this.menuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -216,6 +284,8 @@
             this.panelSubMenu.ResumeLayout(false);
             this.taskPanel.ResumeLayout(false);
             this.taskPanel.PerformLayout();
+            this.listPanel.ResumeLayout(false);
+            this.listPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -233,5 +303,12 @@
         private Label labelOff;
         private Panel taskPanel;
         private Button buttonEND;
+        private Panel listPanel;
+        public Label listLabel;
+        public ListView processListView;
+        private ColumnHeader columnID;
+        private ColumnHeader columnName;
+        private ColumnHeader columnDateTime;
+        private ColumnHeader columnType;
     }
 }

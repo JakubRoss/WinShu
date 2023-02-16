@@ -9,7 +9,8 @@ namespace WinShu
 {
     public class Utils
     {
-        public static string Shutty(DateTime time) 
+        
+        public static Process Shutty(DateTime time) 
         {
 
             var now = DateTime.Now;
@@ -21,26 +22,10 @@ namespace WinShu
             TimeSpan timeUntilShutdown = time - now;
             int totalSeconds = (int)timeUntilShutdown.TotalSeconds;
 
-            Process.Start("shutdown", $"-s -t {totalSeconds}");
+            var proces =Process.Start("shutdown", $"-s -t {totalSeconds}");
 
-            var when = timeUntilShutdown.Hours.ToString();
-            return when;
-        }
-        public static void GetProcess()
-        {
-            Process[] processes = Process.GetProcessesByName("shutdown");
-
-            if (processes.Length > 0)
-            {
-                foreach (Process shutdownProcess in processes)
-                {
-                    // tutaj możesz wykonywać operacje na każdym z procesów "shutdown.exe"
-                }
-            }
-            else
-            {
-                // nie ma żadnego procesu "shutdown.exe" uruchomionego
-            }
+            var when = timeUntilShutdown.Minutes.ToString();
+            return proces;
         }
         public static void hidePanel(Panel panel)
         {
@@ -59,9 +44,12 @@ namespace WinShu
             else
                 panel.Visible = false;
         }
-        public static void hideAllPanels()
+
+        public static string[] AddToListView(Process process)
         {
-            
+            string[] row = { process.Id.ToString(), process.MainWindowTitle, process.StartTime.ToString(), "shutdown" };
+            return row;
+
         }
     }
 }
