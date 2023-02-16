@@ -41,6 +41,7 @@
             this.labelOff = new System.Windows.Forms.Label();
             this.taskPanel = new System.Windows.Forms.Panel();
             this.listPanel = new System.Windows.Forms.Panel();
+            this.delteTaskBtn = new System.Windows.Forms.Button();
             this.processListView = new System.Windows.Forms.ListView();
             this.columnID = new System.Windows.Forms.ColumnHeader();
             this.columnName = new System.Windows.Forms.ColumnHeader();
@@ -209,6 +210,7 @@
             // 
             this.listPanel.AutoScroll = true;
             this.listPanel.BackColor = System.Drawing.Color.Gray;
+            this.listPanel.Controls.Add(this.delteTaskBtn);
             this.listPanel.Controls.Add(this.processListView);
             this.listPanel.Controls.Add(this.listLabel);
             this.listPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -217,6 +219,20 @@
             this.listPanel.Size = new System.Drawing.Size(750, 600);
             this.listPanel.TabIndex = 6;
             this.listPanel.Visible = false;
+            // 
+            // delteTaskBtn
+            // 
+            this.delteTaskBtn.BackColor = System.Drawing.SystemColors.GrayText;
+            this.delteTaskBtn.FlatAppearance.BorderSize = 0;
+            this.delteTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delteTaskBtn.ForeColor = System.Drawing.Color.White;
+            this.delteTaskBtn.Location = new System.Drawing.Point(224, 464);
+            this.delteTaskBtn.Name = "delteTaskBtn";
+            this.delteTaskBtn.Size = new System.Drawing.Size(200, 45);
+            this.delteTaskBtn.TabIndex = 6;
+            this.delteTaskBtn.Text = "delete task";
+            this.delteTaskBtn.UseVisualStyleBackColor = false;
+            this.delteTaskBtn.Click += new System.EventHandler(this.delteTaskBtn_Click);
             // 
             // processListView
             // 
@@ -261,9 +277,9 @@
             this.listLabel.ForeColor = System.Drawing.Color.White;
             this.listLabel.Location = new System.Drawing.Point(224, 26);
             this.listLabel.Name = "listLabel";
-            this.listLabel.Size = new System.Drawing.Size(301, 37);
+            this.listLabel.Size = new System.Drawing.Size(107, 37);
             this.listLabel.TabIndex = 0;
-            this.listLabel.Text = "There is no task to show";
+            this.listLabel.Text = "Task list\r\n";
             // 
             // MainForm
             // 
@@ -310,5 +326,6 @@
         private ColumnHeader columnName;
         private ColumnHeader columnDateTime;
         private ColumnHeader columnType;
+        private Button delteTaskBtn;
     }
 }

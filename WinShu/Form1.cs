@@ -1,5 +1,6 @@
 using System.Diagnostics;
 
+
 namespace WinShu
 {
     public partial class MainForm : Form
@@ -52,13 +53,19 @@ namespace WinShu
         {
             var process = Utils.Shutty(dateTimePicker.Value);
             processList.Add(process);
-            labelOff.Text = $"komp wylaczy sie : {process.StartTime}";
+            labelOff.Text = $"komp wylaczy sie : {process.StartInfo.Arguments}";
         }
 
         private void buttonEND_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
             
+        }
+
+        private void delteTaskBtn_Click(object sender, EventArgs e)
+        {
+            Process.Start("shutdown", $"-a");
+            processListView.Items.Clear();
         }
     }
 }
