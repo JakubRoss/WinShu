@@ -12,50 +12,34 @@ namespace WinShu
         {
 
         }
-        private void hidePanel(Panel panel)
-        {
-            if(panel.Visible == true)
-            {
-                panel.Visible = false;
-            }
-        }
-        private void showPanel(Panel panel)
-        {
-            if(panel.Visible == false)
-            {
-                hidePanel(panel);
-                panel.Visible = true;
-            }
-            else
-                panel.Visible = false;
-        }
 
         //MENU BUTTON
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            showPanel(panelSubMenu);
+            Utils.showPanel(panelSubMenu);
         }
 
         //TASK BUTTON
         private void newTaskButton_Click(object sender, EventArgs e)
         {
-            if(taskPanel.Visible == false)
-            {
-                taskPanel.Visible = true;
-            }
+            Utils.showPanel(taskPanel);   
         }
 
         //LIST BUTTON
         private void listButton_Click(object sender, EventArgs e)
         {
-            taskPanel.Visible = false;
-
+            //Utils.showPanel(panel1);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var when = TaskService.Shutty(dateTimePicker.Value);
+            var when = Utils.Shutty(dateTimePicker.Value);
             labelOff.Text = $"Wylaczy sie za : {when}";
+        }
+
+        private void buttonEND_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

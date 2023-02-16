@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.menuPanel = new System.Windows.Forms.Panel();
+            this.buttonEND = new System.Windows.Forms.Button();
             this.panelSubMenu = new System.Windows.Forms.Panel();
             this.listButton = new System.Windows.Forms.Button();
             this.newTaskButton = new System.Windows.Forms.Button();
             this.buttonMenu = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.taskPanel = new System.Windows.Forms.Panel();
-            this.labelOff = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.taskLabel = new System.Windows.Forms.Label();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.labelOff = new System.Windows.Forms.Label();
+            this.taskPanel = new System.Windows.Forms.Panel();
             this.menuPanel.SuspendLayout();
             this.panelSubMenu.SuspendLayout();
             this.taskPanel.SuspendLayout();
@@ -48,6 +49,7 @@
             // 
             this.menuPanel.AutoScroll = true;
             this.menuPanel.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.menuPanel.Controls.Add(this.buttonEND);
             this.menuPanel.Controls.Add(this.panelSubMenu);
             this.menuPanel.Controls.Add(this.buttonMenu);
             this.menuPanel.Controls.Add(this.panelLogo);
@@ -55,8 +57,22 @@
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(200, 561);
+            this.menuPanel.Size = new System.Drawing.Size(200, 600);
             this.menuPanel.TabIndex = 4;
+            // 
+            // buttonEND
+            // 
+            this.buttonEND.BackColor = System.Drawing.SystemColors.GrayText;
+            this.buttonEND.FlatAppearance.BorderSize = 0;
+            this.buttonEND.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEND.ForeColor = System.Drawing.Color.White;
+            this.buttonEND.Location = new System.Drawing.Point(0, 515);
+            this.buttonEND.Name = "buttonEND";
+            this.buttonEND.Size = new System.Drawing.Size(200, 45);
+            this.buttonEND.TabIndex = 5;
+            this.buttonEND.Text = "Quit";
+            this.buttonEND.UseVisualStyleBackColor = false;
+            this.buttonEND.Click += new System.EventHandler(this.buttonEND_Click);
             // 
             // panelSubMenu
             // 
@@ -130,27 +146,23 @@
             this.panelLogo.Size = new System.Drawing.Size(200, 80);
             this.panelLogo.TabIndex = 2;
             // 
-            // taskPanel
+            // taskLabel
             // 
-            this.taskPanel.AutoScroll = true;
-            this.taskPanel.Controls.Add(this.labelOff);
-            this.taskPanel.Controls.Add(this.button1);
-            this.taskPanel.Controls.Add(this.dateTimePicker);
-            this.taskPanel.Controls.Add(this.taskLabel);
-            this.taskPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.taskPanel.Location = new System.Drawing.Point(200, 0);
-            this.taskPanel.Name = "taskPanel";
-            this.taskPanel.Size = new System.Drawing.Size(734, 561);
-            this.taskPanel.TabIndex = 5;
+            this.taskLabel.AutoSize = true;
+            this.taskLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.taskLabel.Location = new System.Drawing.Point(224, 26);
+            this.taskLabel.Name = "taskLabel";
+            this.taskLabel.Size = new System.Drawing.Size(176, 37);
+            this.taskLabel.TabIndex = 0;
+            this.taskLabel.Text = "Add new task";
             // 
-            // labelOff
+            // dateTimePicker
             // 
-            this.labelOff.AutoSize = true;
-            this.labelOff.Location = new System.Drawing.Point(152, 185);
-            this.labelOff.Name = "labelOff";
-            this.labelOff.Size = new System.Drawing.Size(84, 15);
-            this.labelOff.TabIndex = 3;
-            this.labelOff.Text = "Wylaczy sie za:";
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker.Location = new System.Drawing.Point(299, 134);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(101, 23);
+            this.dateTimePicker.TabIndex = 1;
             // 
             // button1
             // 
@@ -162,34 +174,43 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dateTimePicker
+            // labelOff
             // 
-            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker.Location = new System.Drawing.Point(299, 134);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(101, 23);
-            this.dateTimePicker.TabIndex = 1;
+            this.labelOff.AutoSize = true;
+            this.labelOff.Location = new System.Drawing.Point(152, 185);
+            this.labelOff.Name = "labelOff";
+            this.labelOff.Size = new System.Drawing.Size(84, 15);
+            this.labelOff.TabIndex = 3;
+            this.labelOff.Text = "Wylaczy sie za:";
             // 
-            // taskLabel
+            // taskPanel
             // 
-            this.taskLabel.AutoSize = true;
-            this.taskLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.taskLabel.Location = new System.Drawing.Point(224, 26);
-            this.taskLabel.Name = "taskLabel";
-            this.taskLabel.Size = new System.Drawing.Size(176, 37);
-            this.taskLabel.TabIndex = 0;
-            this.taskLabel.Text = "Add new task";
+            this.taskPanel.AutoScroll = true;
+            this.taskPanel.BackColor = System.Drawing.Color.Gray;
+            this.taskPanel.Controls.Add(this.labelOff);
+            this.taskPanel.Controls.Add(this.button1);
+            this.taskPanel.Controls.Add(this.dateTimePicker);
+            this.taskPanel.Controls.Add(this.taskLabel);
+            this.taskPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.taskPanel.Location = new System.Drawing.Point(200, 0);
+            this.taskPanel.Name = "taskPanel";
+            this.taskPanel.Size = new System.Drawing.Size(750, 600);
+            this.taskPanel.TabIndex = 5;
+            this.taskPanel.Visible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSlateGray;
-            this.ClientSize = new System.Drawing.Size(934, 561);
+            this.BackColor = System.Drawing.Color.Gray;
+            this.ClientSize = new System.Drawing.Size(950, 600);
+            this.ControlBox = false;
             this.Controls.Add(this.taskPanel);
             this.Controls.Add(this.menuPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WinShu";
             this.menuPanel.ResumeLayout(false);
             this.panelSubMenu.ResumeLayout(false);
@@ -206,10 +227,11 @@
         private Button newTaskButton;
         private Button buttonMenu;
         private Panel panelLogo;
-        private Panel taskPanel;
         private Label taskLabel;
         private DateTimePicker dateTimePicker;
-        private Label labelOff;
         private Button button1;
+        private Label labelOff;
+        private Panel taskPanel;
+        private Button buttonEND;
     }
 }
